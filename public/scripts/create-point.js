@@ -72,9 +72,11 @@ function handleSelectedElement(event) {
 
     const itemId = itemLi.dataset.id
 
+  //  console.log('ITEM ID: ', itemId)
+
     //verificar se existem items selecionados, se sim pegar os items selecionados
     
-    const alreadySelected = selectedItems.findIndex( function(item) {
+    const alreadySelected = selectedItems.findIndex( item => {
         const itemFound = item == itemId
         return itemFound
     })
@@ -82,19 +84,18 @@ function handleSelectedElement(event) {
     
     //se n tiver selecionado adicionar a selecao, se tiver tirar 
 
-    if( alreadySelected != -1){
-        const fielteredItems = selectedItems.filter( item => {
+    if( alreadySelected >= 0){
+        const filteredItems = selectedItems.filter( item => {
             const itemIsDifferent = item != itemId
             return itemIsDifferent
         })
 
-        selectedItems = fielteredItems
+        selectedItems = filteredItems
     } else {
         selectedItems.push(itemId)
     }
 
-    console.log(selectedItems)
-
+ // console.log('selectedItems: ', selectedItems)
 
     
     // atualizar o campo escondido com os itens selecionados
